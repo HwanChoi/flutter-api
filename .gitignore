@@ -1,3 +1,84 @@
-# Unused platform specific files
-android/
-ios/
+# Miscellaneous
+.DS_Store
+.flutter-plugins
+.flutter-plugins-dependencies
+.gradle
+.idea
+.metadata
+.packages
+.vscode
+build/
+*.iml
+*.lock
+*.log
+
+# Android-specific
+android/app/build/
+android/gradle/
+**/*.apk
+**/*.aab
+**/*.so # Native libraries
+
+# iOS-specific
+ios/Flutter/.last_build_id
+ios/Runner.xcworkspace/
+ios/Flutter/GeneratedPluginRegistrant.swift
+ios/Runner/GeneratedPluginRegistrant.m
+ios/Runner/GeneratedPluginRegistrant.h
+ios/Runner/*.pbxuser
+ios/Runner/*.mode1v3
+ios/Runner/*.xcscheme
+ios/Runner/project.xcworkspace/
+ios/Runner/Runner.xcodeproj/project.pbxproj
+ios/Runner/Runner.xcodeproj/xcuserdata/
+
+# Web-specific
+web/
+# Except for necessary files
+!web/index.html
+!web/favicon.png
+!web/manifest.json
+!web/icons/
+
+# Generated files
+lib/generated_plugin_registrant.dart
+
+# Flutter specific
+.flutter-plugins-dependencies
+.dart_tool/
+.gradle/
+.idea/
+.metadata
+.packages
+.vscode/
+generated/
+# A build directory is already ignored by build/
+
+# Windows specific
+windows/flutter/generated_plugin_registrant.cc
+windows/flutter/generated_plugin_registrant.h
+windows/flutter/generated_plugins.cmake
+windows/runner/*.vcxproj*
+windows/runner/*.filters
+windows/runner/*.sln
+windows/runner/*.suo
+
+# macOS specific
+macos/Flutter/GeneratedPluginRegistrant.swift
+macos/Runner.xcodeproj/project.pbxproj
+macos/Flutter/.last_build_id
+
+# Linux specific
+linux/flutter/generated_plugin_registrant.cc
+linux/flutter/generated_plugin_registrant.h
+linux/flutter/generated_plugins.cmake
+
+# Large files from previous error output
+build/app/outputs/apk/debug/app-debug.apk
+build/app/outputs/apk/release/app-release.apk
+build/test_cache/build/*.dill.track.dill
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/*
+build/app/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/lib/armeabi-v7a/libflutter.so
+build/app/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/lib/x86_64/libflutter.so
+build/app/intermediates/merged_native_libs/debug/mergeDebugNativeLibs/out/lib/x86_64/libflutter.so
+build/app/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/lib/arm64-v8a/libflutter.so

@@ -1,2 +1,0 @@
-C:/Flutter/examples/api/build/.cxx/debug/33b76s69/armeabi-v7a/CMakeFiles/edit_cache.dir
-C:/Flutter/examples/api/build/.cxx/debug/33b76s69/armeabi-v7a/CMakeFiles/rebuild_cache.dir

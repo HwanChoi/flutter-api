@@ -1,6 +1,0 @@
-[
-    {
-        "merged": "dev.flutter.integration_test-release-3:/drawable-v21/notification_action_background.xml",
-        "source": "dev.flutter.integration_test-core-1.13.1-18:/drawable-v21/notification_action_background.xml"
-    }
-]

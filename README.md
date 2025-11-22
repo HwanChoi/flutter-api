@@ -1,154 +1,75 @@
-# API Example Code
+# Flutter API Examples
 
-This directory contains the API sample code that is referenced from the API
-documentation in the framework.
+This repository, `flutter_api_samples`, serves as a comprehensive collection of runnable API code examples directly referenced by the official Flutter framework documentation. Its primary goal is to provide clear, illustrative demonstrations for various Flutter APIs, aiding developers in understanding and effectively utilizing framework features.
 
-The examples can be run individually by just specifying the path to the example
-on the command line (or in the run configuration of an IDE).
+## Project Structure and Organization
 
-For example (no pun intended!), to run the first example from the `Curve2D`
-class in Chrome, you would run it like so from the [api](.) directory:
+The examples are meticulously organized to mirror the Flutter framework's API structure.
 
-```
-% flutter run -d chrome lib/animation/curves/curve2_d.0.dart
-```
+-   **`lib/`**: Contains the core examples, categorized into subdirectories based on their API domain (e.g., `animation`, `cupertino`, `material`, `widgets`, etc.).
+-   **Individual Example Files**: Each example is a self-contained Dart file, typically defining a `StatelessWidget` or `StatefulWidget`. Files follow a structured naming convention: `lib/library/file/class_name.n.dart` or `lib/library/file/class_name.member_name.n.dart`, where `n` is an index for multiple examples related to the same symbol, and symbol names are converted to `snake_case`.
+-   **`lib/examples.dart`**: Acts as a central manifest, importing and registering all individual example files into a `Map<String, Widget>` named `exampleWidgets`.
+-   **`lib/main.dart`**: The application's entry point. When run, it launches an `ExampleListApp` that presents a browsable list of all registered examples, allowing users to navigate and view live demonstrations.
+-   **`lib/sample_templates`**: Provides boilerplate code (`cupertino.0.dart`, `material.0.dart`, `widgets.0.dart`) to guide developers in creating new examples following best practices for different widget styles.
+-   **`test/`**: Contains unit and integration tests for the examples, ensuring their correctness and functionality.
 
-All of these same examples are available on the API docs site. For instance, the
-example above is available on [this page](
-https://api.flutter.dev/flutter/animation/Curve2D-class.html#animation.Curve2D.1).
-Most of the samples are available as interactive examples in
-[Dartpad](https://dartpad.dev), but some (the ones marked with `{@tool sample}`
-in the framework source code), just don't make sense on the web, and so are
-available as standalone examples that can be run here. For instance, setting the
-system overlay style doesn't make sense on the web (it only changes the
-notification area background color on Android), so you can run the example for
-that on an Android device like so:
+## Usage
 
-```
-% flutter run -d MyAndroidDevice lib/services/system_chrome/system_chrome.set_system_u_i_overlay_style.1.dart
+### Running Individual Examples
+
+You can run any specific example directly from the command line from this directory:
+
+```bash
+flutter run -d <device> lib/<path_to_example_file>.dart
+# Example:
+# flutter run -d chrome lib/animation/curves/curve2_d.0.dart
+# flutter run -d MyAndroidDevice lib/services/system_chrome/system_chrome.set_system_u_i_overlay_style.1.dart
 ```
 
-## Naming
+### Running the Entire Example Application
 
-> `lib/library/file/class_name.n.dart`
->
-> `lib/library/file/class_name.member_name.n.dart`
+To browse all examples within a single application, run:
 
-The naming scheme for the files is similar to the hierarchy under
-[packages/flutter/lib/src](../../packages/flutter/lib/src), except that the
-files are represented as directories (without the `.dart` suffix), and each
-sample in the file is a separate file in that directory. So, for the example
-above, where the examples are from the
-[packages/flutter/lib/src/animation/curves.dart](../../packages/flutter/lib/src/animation/curves.dart)
-file, the `Curve2D` class, the first sample (hence the index "0") for that
-symbol resides in the file named
-[lib/animation/curves/curve2_d.0.dart](lib/animation/curves/curve2_d.0.dart).
-
-Symbol names are converted from "CamelCase" to "snake_case". Dots are left
-between symbol names, so the first example for symbol
-`InputDecoration.prefixIconConstraints` would be converted to
-`input_decoration.prefix_icon_constraints.0.dart`.
-
-If the same example is linked to from multiple symbols, the source will be in
-the canonical location for one of the symbols, and the link in the API docs
-block for the other symbols will point to the first symbol's example location.
-
-## Authoring
-
-> For more detailed information about authoring examples, see
-> [the snippets package](https://pub.dev/packages/snippets).
-
-When authoring examples, first place a block in the Dartdoc documentation for
-the symbol you would like to attach it to. Here's what it might look like if you
-wanted to add a new example to the `Curve2D` class:
-
-```dart
-/// {@tool dartpad}
-/// Write a description of the example here. This description will appear in the
-/// API web documentation to introduce the example.
-///
-/// ** See code in examples/api/lib/animation/curves/curve2_d.0.dart **
-/// {@end-tool}
+```bash
+flutter run
 ```
+This will launch the `ExampleListApp`, providing a navigable interface to explore all samples.
 
-The "See code in" line needs to be formatted exactly as above, with no wrapping
-or newlines, one space after the "`**`" at the beginning, and one space before
-the "`**`" at the end, and the words "See code in" at the beginning of the line.
-This is what the snippets tool use when finding the example source code that you
-are creating.
+### API Documentation Integration
 
-Use `{@tool dartpad}` for Dartpad examples, and use `{@tool sample}` for
-examples that shouldn't be run/shown in Dartpad.
+These examples are directly embedded or linked from the official Flutter API documentation, offering live and runnable code snippets for better understanding of the framework.
 
-Once that comment block is inserted in the source code, create a new file at the
-appropriate path under [`examples/api`](.). See the
-[sample_templates](./lib/sample_templates/) directory for examples of different
-types of samples with some best practices applied.
+### Dartpad and Standalone Examples
 
-The filename should match the location of the source file it is linked from, and
-is named for the symbol it is attached to, in lower_snake_case, with an index
-relating to their order within the doc comment. So, for the `Curve2D` example
-above, since it's in the `animation` library, in a file called `curves.dart`,
-and it's the first example, it should have the name
-`examples/api/lib/animation/curves/curve2_d.0.dart`.
+Many examples are interactive on [Dartpad](https://dartpad.dev), while others (marked `{@tool sample}` in the framework source code) are intended for standalone execution on specific platforms due to their nature (e.g., system UI interactions).
 
-You should also add tests for your sample code under
-[`examples/api/test`](./test), that matches their location under [lib](./lib),
-ending in `_test.dart`. See the section on [writing tests](#writing-tests) for
-more information on what kinds of tests to write.
+## Authoring Examples
 
-The entire example should be in a single file, so that Dartpad can load it.
+For detailed guidelines on authoring examples, refer to [the snippets package documentation](https://pub.dev/packages/snippets).
 
-Only packages that can be loaded by Dartpad may be imported. If you use one that
-hasn't been used in an example before, you may have to add it to the
-[pubspec.yaml](pubspec.yaml) in the api directory.
+Key points for authoring:
 
-## Snippets
+-   **Dartdoc Blocks**: Examples are linked via specific Dartdoc comment blocks in the framework source code. For `dartpad` examples, use `{@tool dartpad}`; for standalone examples, use `{@tool sample}`.
+    ```dart
+    /// {@tool dartpad}
+    /// Write a description of the example here.
+    ///
+    /// ** See code in examples/api/lib/animation/curves/curve2_d.0.dart **
+    /// {@end-tool}
+    ```
+    The "See code in" line must be precisely formatted.
+-   **Filename Convention**: Example filenames match their source file location and the symbol they are attached to, in `lower_snake_case`, with an index.
+    *Example*: `lib/animation/curves/curve2_d.0.dart`
+-   **Single File**: The entire example must be in a single file for Dartpad compatibility.
+-   **Package Imports**: Only packages loadable by Dartpad may be imported. New packages might need to be added to `pubspec.yaml`.
+-   **Snippet Examples**: For incomplete code snippets intended only for display, use `{@tool snippet}` directly in Dartdoc.
 
-There is another type of example that can also be authored, using `{@tool
-snippet}`. Snippet examples are just written inline in the source, like so:
+## Testing
 
-```dart
-/// {@tool dartpad}
-/// Write a description of the example here. This description will appear in the
-/// API web documentation to introduce the example.
-///
-/// ```dart
-/// // Sample code goes here, e.g.:
-/// const Widget emptyBox = SizedBox();
-/// ```
-/// {@end-tool}
-```
+All examples are required to have tests.
 
-The source for these snippets isn't stored under the [`examples/api`](.)
-directory, or available in Dartpad in the API docs, since they're not intended
-to be runnable, they just show some incomplete snippet of example code. It must
-compile (in the context of the sample analyzer), but doesn't need to do
-anything. See [the snippets documentation](
-https://pub.dev/packages/snippets#snippet-tool) for more information about the
-context that the analyzer uses.
+-   **Smoke Tests**: A smoke test ensures all API examples build and run without crashing.
+-   **Functionality Tests**: These are normal unit/widget tests for the example's functionality. Tests should focus on the example itself, not re-testing the underlying Flutter widget functionality.
+-   **Test Location**: Tests reside under the `test/` directory, mirroring the `lib/` structure, and are named `*_test.dart` (e.g., `test/widgets/layout_builder/layout_builder.0_test.dart`).
 
-## Writing Tests
-
-Examples are required to have tests. There is already a "smoke test" that simply
-builds and runs all the API examples, just to make sure that they start up
-without crashing. Functionality tests are required the examples, and generally
-just do what is normally done for writing tests. The one thing that makes it
-more challenging to do for examples is that they can't really be written for
-testability in any obvious way, since that would complicate the examples and
-make them harder to explain.
-
-As an example, in regular framework code, you might include a parameter for a
-`Platform` object that can be overridden by a test to supply a dummy platform,
-but in the example. This would be unnecessarily complex for the example. In all
-other ways, these are just normal tests. You don't need to re-test the
-functionality of the widget being used in the example, but you should test the
-functionality and integrity of the example itself.
-
-Tests go into a directory under [test](./test) that matches their location under
-[lib](./lib). They are named the same as the example they are testing, with
-`_test.dart` at the end, like other tests. For instance, a `LayoutBuilder`
-example that resides in [`lib/widgets/layout_builder/layout_builder.0.dart`](
-./lib/widgets/layout_builder/layout_builder.0.dart) would have its tests in a
-file named [`test/widgets/layout_builder/layout_builder.0_test.dart`](
-./test/widgets/layout_builder/layout_builder.0_test.dart)
+This `README.md` aims to provide a clear and concise overview of the Flutter API examples project.

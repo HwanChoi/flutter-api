@@ -1,0 +1,2 @@
+C:/Flutter/examples/api/build/.cxx/release/3ne2v6e5/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Flutter/examples/api/build/.cxx/release/3ne2v6e5/arm64-v8a/CMakeFiles/rebuild_cache.dir
